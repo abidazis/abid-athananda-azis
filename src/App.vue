@@ -120,6 +120,65 @@ const contact = {
         </div>
       </section>
 
+      <!-- ABOUT SECTION -->
+      <section class="about">
+        <div class="container about-inner">
+          <div class="about-text">
+            <p class="section-tag">About Me</p>
+            <h2 class="section-title small">Building Solutions, Not Just Websites</h2>
+            <p class="about-desc">
+              I am a Fullstack Web Developer with a strong foundation in Information Systems.
+              I specialize in building scalable web applications using Laravel and Vue.js,
+              focusing on clean architecture, efficient workflows, and business-driven solutions.
+            </p>
+
+            <div class="about-highlights">
+              <div class="highlight-box">
+                <h4>Business-Oriented</h4>
+                <p>I understand workflows, not just code.</p>
+              </div>
+              <div class="highlight-box">
+                <h4>Clean Architecture</h4>
+                <p>Structured and maintainable system design.</p>
+              </div>
+              <div class="highlight-box">
+                <h4>Fullstack Ready</h4>
+                <p>Frontend to backend integration expert.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS SECTION -->
+      <section class="process">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-tag">My Workflow</p>
+            <h2 class="section-title small">How I Build Digital Products</h2>
+            <div class="title-line"></div>
+          </div>
+
+          <div class="process-grid">
+            <div class="process-step">
+              <span>01</span>
+              <h4>Understanding Business Needs</h4>
+            </div>
+            <div class="process-step">
+              <span>02</span>
+              <h4>UI/UX & System Planning</h4>
+            </div>
+            <div class="process-step">
+              <span>03</span>
+              <h4>Development & Integration</h4>
+            </div>
+            <div class="process-step">
+              <span>04</span>
+              <h4>Testing & Deployment</h4>
+            </div>
+          </div>
+        </div>
+      </section>
       <section id="projects" class="projects">
         <div class="container">
           <div class="section-header">
