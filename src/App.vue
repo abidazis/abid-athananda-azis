@@ -1,490 +1,394 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
-// Data Profil
-const profile = {
-  name: 'Abid Azis',
-  role: 'Full-Stack Web Developer',
-  tagline: 'Membangun solusi digital yang efisien dan skalabel.',
-  bio: 'Mahasiswa Sistem Informasi Universitas Singaperbangsa Karawang (UNSIKA) yang memiliki passion kuat dalam pengembangan aplikasi web. Berpengalaman menggunakan ekosistem Laravel dan Vue.js untuk mendesain sistem digitalisasi bisnis, workflow perusahaan, dan manajemen operasional.'
-}
+// --- 1. IMPORT ASSETS (Pastikan file ada di folder src/assets/images/) ---
+// Foto Profil & Background
+import profileImg from './assets/images/profile.jpg'
+import heroBg from './assets/images/hero-bg.webp'
 
-// Data Skills
-const skills = ref(['Laravel', 'Vue.js', 'Livewire', 'MySQL', 'System Analysis', 'UI/UX Design', 'Tailwind CSS', 'Git'])
+// Gambar Proyek (sesuaikan nama file dengan yang kamu letakkan di folder src/assets/images/projects/)
+import proj1Img from './assets/images/projects/project1.jpg'
+import proj2Img from './assets/images/projects/project2.jpg'
+import proj3Img from './assets/images/projects/project3.jpg'
+import proj4Img from './assets/images/projects/project4.jpg'
 
-// Data Pengalaman
-const experiences = ref([
-  {
-    role: 'MIS Intern (Management Information System)',
-    company: 'PT Kayaba Indonesia',
-    period: '2025 - Sekarang',
-    desc: 'Mengembangkan sistem workflow persetujuan dokumen kemasan berbasis web untuk efisiensi proses bisnis (Paperless Office).'
-  },
-  {
-    role: 'Founder & Manager',
-    company: 'Atribut Paskibra Cikarang (APC) & Anti Polos',
-    period: '2022 - Sekarang',
-    desc: 'Mengelola operasional bisnis, produksi atribut, sablon, serta mengembangkan sistem manajemen pemesanan secara mandiri.'
-  },
-  {
-    role: 'Paskibra Coach / Ganapatra Management',
-    company: 'Berbagai Sekolah di Cikarang',
-    period: 'Aktif',
-    desc: 'Melatih kepemimpinan, kedisiplinan, dan manajemen acara komunitas kepemudaan.'
-  }
-])
-
-// Data Proyek (Disesuaikan dengan real project)
+// --- 2. DATA PROJEK ---
 const projects = ref([
   {
-    title: 'Packaging Document Approval Workflow',
-    desc: 'Sistem digitalisasi formulir persetujuan kemasan untuk efisiensi bisnis (Studi Kasus: PT. Kayaba Indonesia).',
-    tech: ['Laravel', 'Vue.js', 'System Analysis'],
-    link: '#',
-    github: '#'
+    id: 1,
+    title: 'Sistem Digitalisasi CSR',
+    desc: 'Aplikasi pengelolaan Corporate Social Responsibility berbasis web untuk korporasi.',
+    tech: ['Laravel', 'Vue.js', 'MySQL', 'UI/UX'],
+    link: '#', // Ganti dengan link live/repo
+    image: proj1Img // Memakai hasil import gambar
   },
   {
-    title: 'PANDARA Scoring System',
-    desc: 'Sistem informasi penilaian lomba Paskibra secara real-time dan akurat terintegrasi database.',
-    tech: ['Laravel', 'Livewire', 'MySQL'],
+    id: 2,
+    title: 'DesaGo Market',
+    desc: 'Platform marketplace inovatif untuk pemberdayaan ekonomi desa.',
+    tech: ['Web Dev', 'API Integration', 'UI/UX'],
     link: '#',
-    github: '#'
+    image: proj2Img
   },
   {
-    title: 'E-Report Card System',
-    desc: 'Sistem manajemen e-rapor terintegrasi untuk memudahkan guru dalam mengolah dan menerbitkan nilai siswa.',
-    tech: ['Web Development', 'Database Management'],
+    id: 3,
+    title: 'Digital Packaging Approval',
+    desc: 'Sistem digitalisasi formulir persetujuan kemasan (Paperless Office) untuk efisiensi.',
+    tech: ['System Analysis', 'Backend', 'Web App'],
     link: '#',
-    github: '#'
+    image: proj3Img
   },
   {
-    title: 'APC Business Management',
-    desc: 'Aplikasi internal untuk manajemen stok, kasir, dan portofolio e-commerce Atribut Paskibra Cikarang.',
-    tech: ['Vue.js', 'Business Logic'],
+    id: 4,
+    title: 'Atribut Paskibra Cikarang',
+    desc: 'Pengembangan sistem manajemen bisnis dan portofolio e-commerce terintegrasi.',
+    tech: ['Business Logic', 'Fullstack', 'Web Dev'],
     link: '#',
-    github: '#'
+    image: proj4Img
   }
 ])
 
 const contact = {
-  email: 'abidazis@example.com', // Sesuaikan
-  linkedin: 'https://linkedin.com/in/username-kamu', // Sesuaikan
-  github: 'https://github.com/username-kamu', // Sesuaikan
-  instagram: 'https://instagram.com/username-kamu' // Sesuaikan
+  email: 'abid.azis.dev@example.com', // GANTI INI
+  linkedin: 'https://linkedin.com/in/abidazis', // GANTI INI
+  github: 'https://github.com/abidazis' // GANTI INI
 }
-
-// Simple scroll animation logic
-onMounted(() => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show')
-      }
-    })
-  })
-  
-  document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-    observer.observe(el)
-  })
-})
 </script>
 
 <template>
   <div class="app-wrapper">
+    <div class="global-overlay"></div>
+
     <nav class="navbar">
-      <div class="nav-content">
-        <span class="logo">Abid<span class="highlight">.dev</span></span>
+      <div class="nav-container">
+        <span class="logo">Abid<span class="highlight">.</span>Azis</span>
         <div class="nav-links">
-          <a href="#about">Tentang</a>
-          <a href="#experience">Pengalaman</a>
-          <a href="#projects">Proyek</a>
-          <a href="#contact" class="nav-cta">Kontak</a>
+          <a href="#projects">Work</a>
+          <a :href="contact.github" target="_blank">Git</a>
+          <a :href="'mailto:' + contact.email" class="nav-cta">Hire Me</a>
         </div>
       </div>
     </nav>
 
-    <main class="container">
-      <section id="hero" class="hero animate-on-scroll">
-        <div class="hero-text">
-          <p class="greeting">Halo, Saya</p>
-          <h1 class="gradient-text">{{ profile.name }}</h1>
-          <h2 class="subtitle">{{ profile.role }}</h2>
-          <p class="bio">{{ profile.bio }}</p>
-          
-          <div class="skills-wrapper">
-            <span v-for="skill in skills" :key="skill" class="skill-pill">{{ skill }}</span>
+    <main class="main-content">
+      <section class="hero" :style="{ backgroundImage: `url(${heroBg})` }">
+        <div class="hero-overlay"></div>
+        <div class="container hero-inner">
+          <div class="hero-text-block">
+            <p class="greeting">Halo, Saya <span class="hand-icon">👋</span></p>
+            <h1 class="hero-name gradient-text">Abid Azis</h1>
+            <h2 class="hero-title">Information Systems Student | <span class="highlight">Full-Stack Web Developer</span></h2>
+            <p class="hero-bio">
+              Mahasiswa semester 7 yang fokus membangun solusi digital efisien menggunakan 
+              <strong>Laravel & Vue.js</strong>. Berpengalaman mengubah sistem konvensional 
+              menjadi aplikasi web yang *scalable* dan *user-friendly*.
+            </p>
+            <div class="hero-cta">
+              <a href="#projects" class="btn btn-primary">Lihat Karya</a>
+              <a :href="contact.linkedin" target="_blank" class="btn btn-secondary">LinkedIn Profile</a>
+            </div>
           </div>
-
-          <div class="cta-buttons">
-            <a :href="'mailto:' + contact.email" class="btn primary">
-              Mulai Diskusi
-            </a>
-            <a :href="contact.github" target="_blank" class="btn secondary">
-              Lihat GitHub
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" class="experience section-pad animate-on-scroll">
-        <h2 class="section-title">Perjalanan Karir & Bisnis</h2>
-        <div class="timeline">
-          <div v-for="(exp, index) in experiences" :key="index" class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content card-glass">
-              <h3>{{ exp.role }}</h3>
-              <span class="company">{{ exp.company }} | {{ exp.period }}</span>
-              <p>{{ exp.desc }}</p>
+          <div class="hero-image-block">
+            <div class="profile-frame">
+              <img :src="profileImg" alt="Abid Azis - Web Developer" class="profile-photo" />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="projects" class="projects section-pad animate-on-scroll">
-        <h2 class="section-title">Proyek & Karya</h2>
-        <div class="grid">
-          <div v-for="(item, index) in projects" :key="index" class="card card-glass group">
-            <div class="card-header">
-              <svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-              <div class="card-links">
-                <a :href="item.github" target="_blank" title="GitHub Repo">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </a>
-                <a :href="item.link" target="_blank" title="Live Demo">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
+      <section id="projects" class="projects">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-tag">Featured Work</p>
+            <h2 class="section-title">Proyek Unggulan</h2>
+            <div class="title-line"></div>
+          </div>
+
+          <div class="project-grid">
+            <div v-for="item in projects" :key="item.id" class="project-card">
+              <div class="card-image-wrapper">
+                <img :src="item.image" :alt="item.title" class="card-image" />
+                <div class="card-image-overlay">
+                  <a v-if="item.link !== '#'" :href="item.link" target="_blank" class="view-link">View Project →</a>
+                </div>
               </div>
-            </div>
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.desc }}</p>
-            <div class="tags">
-              <span v-for="tech in item.tech" :key="tech" class="tag">{{ tech }}</span>
+              
+              <div class="card-content">
+                <h3 class="card-title">{{ item.title }}</h3>
+                <p class="card-desc">{{ item.desc }}</p>
+                <div class="tags-wrapper">
+                  <span v-for="tech in item.tech" :key="tech" class="tag-pill">{{ tech }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer id="contact" class="footer">
-      <div class="footer-content animate-on-scroll">
-        <h2>Tertarik untuk berkolaborasi?</h2>
-        <p>Mari diskusikan ide, proyek web, atau peluang kerja sama.</p>
-        <a :href="'mailto:' + contact.email" class="btn primary footer-btn">Say Hello</a>
-        <div class="social-links">
-          <a :href="contact.linkedin" target="_blank">LinkedIn</a>
-          <a :href="contact.github" target="_blank">GitHub</a>
-          <a :href="contact.instagram" target="_blank">Instagram</a>
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p class="copyright">© 2026 Abid Azis. Crafted with <span class="vue-icon">V</span> Vue.js & Vite.</p>
+        <div class="footer-socials">
+          <a :href="contact.email" title="Email Saya">Email</a>
+          <a :href="contact.linkedin" target="_blank" title="LinkedIn">LiN</a>
+          <a :href="contact.github" target="_blank" title="GitHub">Git</a>
         </div>
-        <p class="copyright">© 2026 Abid Azis. Dibuat dengan Vue.js & Vite.</p>
       </div>
     </footer>
   </div>
 </template>
 
-<style scoped>
-/* ================= VARIABLES ================= */
+<style>
+/* --- A. GLOBAL RESET & FOUNDATION --- */
 :root {
-  --bg-dark: #0f172a;
-  --bg-surface: #1e293b;
-  --bg-surface-hover: #334155;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --accent: #10b981; /* Emerald / Vue Green */
-  --accent-glow: rgba(16, 185, 129, 0.4);
+  /* Palette Warna Modern (Dark) */
+  --bg-dark: #0a0e17;        /* Latar belakang utama super gelap */
+  --bg-card: #141a29;        /* Latar belakang card/elemen */
+  --accent: #42b883;         /* Vue Green */
+  --accent-secondary: #35495e; /* Vue Dark Blue */
+  
+  --text-main: #f4f4f7;
+  --text-muted: #9ca3af;
+  
+  --shadow-card: 0 10px 30px -10px rgba(2,12,27,0.7);
+  
+  /* Font Family */
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* ================= RESET & BASE ================= */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  scroll-behavior: smooth;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body { 
+  background-color: var(--bg-dark); 
+  color: var(--text-main); 
+  font-family: var(--font-main); 
+  line-height: 1.6; 
+  overflow-x: hidden; 
 }
 
-.app-wrapper {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-  min-height: 100vh;
-  overflow-x: hidden;
-  line-height: 1.6;
-}
+a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.section-pad {
-  padding: 100px 0;
-}
-
+.container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
 .highlight { color: var(--accent); }
 
-/* ================= TYPOGRAPHY ================= */
+/* Efek Gradient Text (Kunci Desain Modern) */
 .gradient-text {
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, #34d399, #059669);
+  background: linear-gradient(135deg, #f4f4f7 30%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
-  line-height: 1.1;
+  background-clip: text;
+  color: transparent; /* fallback */
 }
 
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
+/* --- B. APPS WRAPPER & OVERLAYS --- */
+.app-wrapper { position: relative; min-height: 100vh; }
+.global-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(rgba(66, 184, 131, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: -1;
 }
 
-.section-title::after {
-  content: "";
-  height: 1px;
-  flex-grow: 1;
-  background-color: var(--bg-surface-hover);
-}
-
-/* ================= NAVBAR ================= */
+/* --- C. NAVBAR (HEADER) --- */
 .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  backdrop-filter: blur(10px);
-  background: rgba(15, 23, 42, 0.8);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  z-index: 100;
+  position: fixed; top: 0; width: 100%; 
+  background: rgba(10, 14, 23, 0.8); 
+  backdrop-filter: blur(10px); /* Efek Glassmorphism */
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  z-index: 1000;
 }
 
-.nav-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.nav-container {
+  max-width: 1400px; margin: 0 auto; 
+  padding: 20px 40px; 
+  display: flex; justify-content: space-between; align-items: center;
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: -0.5px;
-}
+.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
 
-.nav-links {
-  display: flex;
-  gap: 25px;
-  align-items: center;
-}
-
-.nav-links a {
-  color: var(--text-main);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover {
-  color: var(--accent);
-}
+.nav-links { display: flex; gap: 30px; align-items: center; }
+.nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); }
+.nav-links a:hover { color: var(--accent); }
 
 .nav-cta {
-  border: 1px solid var(--accent);
-  padding: 6px 16px;
+  border: 2px solid var(--accent);
+  padding: 8px 18px;
   border-radius: 4px;
   color: var(--accent) !important;
+  font-weight: 600 !important;
 }
-.nav-cta:hover {
-  background: rgba(16, 185, 129, 0.1);
-}
+.nav-cta:hover { background: rgba(66, 184, 131, 0.1); transform: translateY(-2px); }
 
-/* ================= HERO ================= */
+/* --- D. HERO SECTION --- */
 .hero {
   min-height: 100vh;
-  display: flex;
+  background-size: cover; background-position: center; background-attachment: fixed;
+  position: relative;
+  display: flex; align-items: center;
+  padding-top: 100px; /* offset navbar */
+}
+
+.hero-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(10, 14, 23, 0.6) 0%, var(--bg-dark) 100%);
+}
+
+.hero-inner {
+  position: relative; z-index: 10;
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px;
   align-items: center;
-  padding-top: 80px;
 }
 
-.hero-text {
-  max-width: 700px;
-}
+.greeting { font-family: 'Courier New', monospace; color: var(--accent); font-size: 1.1rem; margin-bottom: 10px; }
+.hand-icon { display: inline-block; animation: wave 2.5s infinite; transform-origin: 70% 70%; }
 
-.greeting {
-  color: var(--accent);
-  font-family: monospace;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-}
+.hero-name { font-size: 5rem; font-weight: 900; line-height: 1; margin-bottom: 15px; letter-spacing: -3px; }
+.hero-title { font-size: 1.6rem; color: var(--text-muted); font-weight: 500; margin-bottom: 25px; }
+.hero-bio { max-width: 650px; color: #bdc3c7; font-size: 1.1rem; margin-bottom: 40px; line-height: 1.8; }
 
-.subtitle {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  color: var(--text-muted);
-  margin-bottom: 24px;
-}
-
-.bio {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  margin-bottom: 30px;
-  max-width: 600px;
-}
-
-.skills-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 40px;
-}
-
-.skill-pill {
-  background: var(--bg-surface);
-  color: var(--accent);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-/* ================= BUTTONS ================= */
-.cta-buttons { display: flex; gap: 15px; }
+/* Buttons */
+.hero-cta { display: flex; gap: 20px; }
 .btn {
-  padding: 14px 28px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  display: inline-block;
+  padding: 15px 35px; border-radius: 6px; font-weight: 700; font-size: 1rem;
+  text-transform: uppercase; letter-spacing: 1px;
 }
-.primary {
-  background: var(--accent);
-  color: var(--bg-dark);
+.btn-primary {
+  background: var(--accent); color: #0a0e17;
+  border: 2px solid var(--accent);
 }
-.primary:hover {
-  background: #059669;
-  box-shadow: 0 0 15px var(--accent-glow);
-  transform: translateY(-2px);
-}
-.secondary {
-  border: 1px solid var(--text-muted);
-  color: var(--text-main);
-}
-.secondary:hover {
-  border-color: var(--accent);
-  background: rgba(16, 185, 129, 0.05);
-  transform: translateY(-2px);
-}
+.btn-primary:hover { box-shadow: 0 0 20px rgba(66, 184, 131, 0.5); transform: translateY(-3px); }
 
-/* ================= TIMELINE (EXPERIENCE) ================= */
-.timeline {
-  position: relative;
-  padding-left: 30px;
+.btn-secondary {
+  border: 2px solid rgba(255,255,255,0.2);
+  color: #f4f4f7;
 }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--bg-surface-hover);
+.btn-secondary:hover { border-color: var(--accent); background: rgba(66, 184, 131, 0.05); }
+
+/* Profile Photo Frame */
+.hero-image-block { display: flex; justify-content: flex-end; }
+.profile-frame {
+  width: 380px; height: 380px;
+  padding: 15px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50%; /* Bulat sempurna */
+  backdrop-filter: blur(5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
-.timeline-item {
-  position: relative;
-  margin-bottom: 40px;
-}
-.timeline-dot {
-  position: absolute;
-  left: -35px;
-  top: 6px;
-  width: 12px;
-  height: 12px;
+.profile-photo {
+  width: 100%; height: 100%;
+  object-fit: cover;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent-glow);
-}
-.company {
-  display: block;
-  font-family: monospace;
-  color: var(--accent);
-  margin-bottom: 10px;
-  font-size: 0.9rem;
+  border: 4px solid var(--bg-dark);
 }
 
-/* ================= CARDS (PROJECTS) ================= */
-.grid {
+/* --- E. PROJECTS SECTION --- */
+.projects { padding: 120px 0; }
+
+.section-header { text-align: center; margin-bottom: 80px; }
+.section-tag { font-family: 'Courier New', monospace; color: var(--accent); font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; }
+.section-title { font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; margin: 10px 0 20px; }
+.title-line { width: 80px; height: 4px; background: var(--accent); margin: 0 auto; border-radius: 2px; }
+
+/* Project Grid */
+.project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
 }
 
-.card-glass {
-  background: var(--bg-surface);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+/* Project Card (Glassmorphism + Shadow) */
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.03);
   border-radius: 12px;
-  padding: 30px;
-  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 60px -15px rgba(2, 12, 27, 0.8);
+  border-color: rgba(66, 184, 131, 0.2);
 }
 
-.card-glass:hover {
-  transform: translateY(-8px);
-  border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+/* Card Image & Hover Effect */
+.card-image-wrapper { position: relative; width: 100%; height: 220px; overflow: hidden; }
+.card-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.project-card:hover .card-image { transform: scale(1.1); }
+
+.card-image-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(10, 14, 23, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex; justify-content: center; align-items: center;
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.card-image-wrapper:hover .card-image-overlay { opacity: 1; }
+
+.view-link {
+  color: var(--accent); font-weight: 700; font-size: 1.1rem;
+  padding: 10px 20px; border: 2px solid var(--accent); border-radius: 4px;
 }
 
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
+/* Card Content */
+.card-content { padding: 30px; }
+.card-title { font-size: 1.6rem; font-weight: 700; color: #f4f4f7; margin-bottom: 12px; letter-spacing: -0.5px; }
+.card-desc { font-size: 0.95rem; color: #a0a0a0; margin-bottom: 25px; line-height: 1.7; min-height: 65px; }
+
+/* Tags Pills */
+.tags-wrapper { display: flex; flex-wrap: wrap; gap: 10px; }
+.tag-pill {
+  background: #1e293b; color: #f4f4f7;
+  font-size: 0.75rem; font-weight: 600; font-family: 'Courier New', monospace;
+  padding: 5px 12px; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
-.folder-icon { color: var(--accent); width: 40px; height: 40px; }
-.card-links { display: flex; gap: 15px; }
-.card-links a { color: var(--text-muted); transition: color 0.3s; }
-.card-links a:hover { color: var(--accent); }
-
-.card-glass h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main); }
-.card-glass p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
-
-.tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
-.tag { font-family: monospace; font-size: 0.8rem; color: var(--text-muted); }
-
-/* ================= FOOTER ================= */
+/* --- F. FOOTER --- */
 .footer {
-  text-align: center;
-  padding: 100px 20px 50px;
+  background: #080b12;
+  padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.03);
 }
-.footer-content h2 { margin-bottom: 15px; }
-.footer-content p { color: var(--text-muted); margin-bottom: 30px; }
-.footer-btn { margin-bottom: 50px; }
-.social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
-.social-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-.social-links a:hover { color: var(--accent); }
-.copyright { font-size: 0.8rem !important; color: #64748b !important; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.85rem; }
 
-/* ================= ANIMATIONS ================= */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.animate-on-scroll.show {
-  opacity: 1;
-  transform: translateY(0);
+.vue-icon { color: var(--accent); font-weight: 900; font-family: cursive; }
+
+.footer-socials { display: flex; gap: 20px; }
+.footer-socials a:hover { color: var(--accent); }
+
+/* --- G. KEYFRAMES & RESPONSIVE --- */
+@keyframes wave {
+  0% { transform: rotate( 0.0deg) }
+ 10% { transform: rotate(14.0deg) }
+ 20% { transform: rotate(-8.0deg) }
+ 30% { transform: rotate(14.0deg) }
+ 40% { transform: rotate(-4.0deg) }
+ 50% { transform: rotate(10.0deg) }
+ 60% { transform: rotate( 0.0deg) }
+100% { transform: rotate( 0.0deg) }
 }
 
-/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .hero-name { font-size: 4rem; }
+  .profile-frame { width: 300px; height: 300px; }
+}
+
 @media (max-width: 768px) {
-  .nav-links { display: none; /* Simplifikasi mobile view */ }
-  .gradient-text { font-size: 2.5rem; }
-  .section-pad { padding: 60px 0; }
-  .cta-buttons { flex-direction: column; width: 100%; }
-  .btn { text-align: center; }
+  .nav-links { display: none; } /* Sederhanakan untuk mobile */
+  .hero-inner { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 40px; }
+  .hero-name { font-size: 3.5rem; letter-spacing: -2px; }
+  .hero-bio { margin: 0 auto 30px; }
+  .hero-cta { justify-content: center; }
+  .hero-image-block { justify-content: center; order: -1; } /* Foto diatas teks pada mobile */
+  .profile-frame { width: 250px; height: 250px; }
+  
+  .section-title { font-size: 2.8rem; }
+  .footer-inner { flex-direction: column; gap: 15px; text-align: center; }
 }
 </style>
