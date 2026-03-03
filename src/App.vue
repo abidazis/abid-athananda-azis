@@ -239,7 +239,10 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 
 .hero-inner {
   position: relative; z-index: 10;
-  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px;
+  display: grid;
+  /* Gunakan minmax agar teks dan gambar tidak saling dorong */
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 40px; 
   align-items: center;
 }
 
@@ -269,13 +272,21 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 .btn-secondary:hover { border-color: var(--accent); background: rgba(66, 184, 131, 0.05); }
 
 /* Profile Photo Frame */
-.hero-image-block { display: flex; justify-content: flex-end; }
+.hero-image-block { 
+  display: flex; 
+  justify-content: center; /* Ubah jadi center agar seimbang */
+  width: 100%;
+}
+
 .profile-frame {
-  width: 380px; height: 380px;
+  width: 100%;             /* Berubah jadi persentase */
+  max-width: 380px;        /* Batas maksimal lebar */
+  aspect-ratio: 1 / 1;     /* Otomatis menjaga bentuk bulat sempurna */
+  height: auto;            /* Hapus tinggi fixed */
   padding: 15px;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 50%; /* Bulat sempurna */
+  border-radius: 50%;
   backdrop-filter: blur(5px);
   box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
@@ -375,19 +386,24 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 }
 
 @media (max-width: 1024px) {
-  .hero-name { font-size: 4rem; }
-  .profile-frame { width: 300px; height: 300px; }
+  /* Di layar laptop biasa/tablet, langsung ubah jadi 1 kolom (atas bawah) */
+  .hero-inner { 
+    grid-template-columns: 1fr; 
+    text-align: center; 
+    justify-items: center; 
+    gap: 40px; 
+  }
+  .hero-name { font-size: 4rem; letter-spacing: -2px; }
+  .hero-bio { margin: 0 auto 30px; }
+  .hero-cta { justify-content: center; }
+  .hero-image-block { order: -1; } /* Foto pindah ke atas teks */
+  .profile-frame { max-width: 320px; }
 }
 
 @media (max-width: 768px) {
-  .nav-links { display: none; } /* Sederhanakan untuk mobile */
-  .hero-inner { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 40px; }
-  .hero-name { font-size: 3.5rem; letter-spacing: -2px; }
-  .hero-bio { margin: 0 auto 30px; }
-  .hero-cta { justify-content: center; }
-  .hero-image-block { justify-content: center; order: -1; } /* Foto diatas teks pada mobile */
-  .profile-frame { width: 250px; height: 250px; }
-  
+  .nav-links { display: none; }
+  .hero-name { font-size: 3.5rem; }
+  .profile-frame { max-width: 250px; }
   .section-title { font-size: 2.8rem; }
   .footer-inner { flex-direction: column; gap: 15px; text-align: center; }
 }
