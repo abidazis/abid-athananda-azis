@@ -68,8 +68,8 @@ const projects = ref([
 ])
 
 const contact = {
-  email: 'abid.azis@example.com', // Ganti dengan email asli
-  linkedin: 'https://linkedin.com/in/abidazis', // Ganti
+  email: 'abidathanandaazis@gmail.com', // Ganti dengan email asli
+  linkedin: 'https://www.linkedin.com/in/abid-athananda-azis/', // Ganti
   github: 'https://github.com/abidazis', // Ganti
   cvFile: '/CV_Abid_Azis.pdf' // NAMA FILE HARUS SAMA PERSIS DENGAN YANG DI FOLDER PUBLIC
 }
@@ -97,7 +97,7 @@ const closeModal = () => {
 
     <nav class="navbar">
       <div class="nav-container">
-        <span class="logo">Abid<span class="highlight">.</span>Azis</span>
+        <span class="logo">Abid<span class="highlight">.</span> Athananda Azis</span>
         <div class="nav-links">
           <a href="#skills">Skills</a>
           <a href="#projects">Work</a>
@@ -114,9 +114,9 @@ const closeModal = () => {
           <div class="hero-text-block">
             <p class="greeting">Hi, I'm <span class="hand-icon">👋</span></p>
             <h1 class="hero-name gradient-text">Abid Azis</h1>
-            <h2 class="hero-title">Information Systems Student | <span class="highlight">Full-Stack Developer</span></h2>
+            <h2 class="hero-title">Fullstack Web Developer | <span class="highlight">Building Scalable Web Applications</span></h2>
             <p class="hero-bio">
-              An Information Systems student at UNSIKA with a strong passion for building efficient digital solutions. 
+              I help businesses grow through modern, fast, and reliable web systems. 
               Experienced in using <strong>Laravel & Vue.js</strong> to transform conventional business workflows into scalable, user-friendly web applications.
             </p>
 
