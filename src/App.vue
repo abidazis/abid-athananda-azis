@@ -26,44 +26,55 @@ const techSkills = ref([
 // --- 3. PROJECTS DATA ---
 const projects = ref([
   {
-    id: 1,
-    title: 'Packaging Document Approval Workflow',
-    shortDesc: 'A digitalized packaging approval workflow system (Paperless Office).',
-    fullDesc: 'A comprehensive web-based workflow system built for enterprise business process efficiency at PT Kayaba Indonesia. This system digitizes the manual packaging approval process into a paperless, trackable, and efficient workflow. Features include multi-level role approvals, real-time status tracking, and automated email notifications.',
+    id: 2,
+    title: 'Document Approval Workflow',
+    shortDesc: 'A digitalized paperless workflow system for enterprise packaging approvals.',
+    fullDesc: 'A comprehensive web-based workflow system built to improve business process efficiency (Paperless Office) at PT Kayaba Indonesia. This system digitizes the manual packaging document approval process, featuring multi-level role approvals, real-time status tracking, and structured digital archiving.',
     tech: ['Laravel', 'Vue.js', 'MySQL', 'System Analysis'],
     link: '#', 
     github: '#',
-    image: proj1Img
-  },
-  {
-    id: 2,
-    title: 'PANDARA Scoring System',
-    shortDesc: 'A real-time scoring information system developed for Paskibra competitions.',
-    fullDesc: 'PANDARA is a dedicated scoring management system designed to streamline judging in Paskibra competitions. It features real-time leaderboard updates, secure judge authentication, automated calculation algorithms to prevent human error, and comprehensive printable reporting.',
-    tech: ['Laravel', 'Livewire', 'MySQL'],
-    link: '#',
-    github: '#',
-    image: proj2Img
+    // Masukkan 2-3 foto di sini
+    images: [p2_1, p2_2, p2_3] 
   },
   {
     id: 3,
-    title: 'E-Report Card System',
-    shortDesc: 'An integrated student report card management system.',
-    fullDesc: 'An educational platform designed to help teachers manage student grades, attendance, and extracurricular activities. The system automatically calculates final scores and generates formatted report cards (E-Rapor) ready for printing or digital distribution to parents.',
-    tech: ['PHP', 'MySQL', 'Bootstrap'],
+    title: 'Business Travel Management',
+    shortDesc: 'A corporate system designed to manage travel documents and requests.',
+    fullDesc: 'An internal web application designed to streamline corporate business travel. The system allows employees to submit travel requests, manages the approval hierarchy, calculates estimated travel allowances, and generates official travel assignment letters automatically.',
+    tech: ['Laravel', 'Web Development', 'MySQL'],
     link: '#',
     github: '#',
-    image: proj3Img
+    images: [p3_1, p3_2, p3_3]
+  },
+  {
+    id: 1,
+    title: 'Corporate Social Responsibility (CSR) System',
+    shortDesc: 'A platform to manage, track, and report corporate social responsibility programs.',
+    fullDesc: 'A centralized digital platform created to manage a company’s CSR initiatives. It features budget tracking, program documentation, beneficiary management, and generates comprehensive reports to measure the impact of the social programs implemented.',
+    tech: ['Laravel', 'Vue.js', 'UI/UX'],
+    link: '#',
+    github: '#',
+    images: [p1_1, p1_2, p1_3, p1_4]
   },
   {
     id: 4,
-    title: 'APC Business Management',
-    shortDesc: 'An internal e-commerce and inventory management system.',
-    fullDesc: 'A custom ERP and e-commerce solution built for Atribut Paskibra Cikarang. It handles daily business operations including inventory tracking, point of sales (cashier), custom product orders (like t-shirt printing), and online portfolio display for customers.',
-    tech: ['Vue.js', 'Laravel', 'Tailwind CSS'],
+    title: 'DesaGo Market E-Commerce',
+    shortDesc: 'An innovative digital marketplace built to empower village economies.',
+    fullDesc: 'DesaGo Market is an e-commerce platform dedicated to local village entrepreneurs. It provides a digital storefront for rural products, complete with a shopping cart, order management, and payment gateway integration to help local businesses reach a wider market.',
+    tech: ['Fullstack', 'API Integration', 'UI/UX'],
     link: '#',
     github: '#',
-    image: proj4Img
+    images: [p4_1, p4_2, p4_3]
+  },
+  {
+    id: 5,
+    title: 'PANDARA Scoring System',
+    shortDesc: 'A real-time scoring and leaderboard system for Paskibra competitions.',
+    fullDesc: 'PANDARA is a specialized scoring management system engineered for Paskibra competitions. It eliminates human error by providing judges with a digital scoring interface, automatically calculating complex weightings, and projecting real-time leaderboards for the audience.',
+    tech: ['Laravel', 'Livewire', 'Database Design'],
+    link: '#',
+    github: '#',
+    images: [p5_1, p5_2, p5_3] // Ganti dengan foto asli
   }
 ])
 
@@ -165,7 +176,7 @@ const closeModal = () => {
           <div class="project-grid">
             <div v-for="item in projects" :key="item.id" class="project-card" @click="openModal(item)">
               <div class="card-image-wrapper">
-                <img :src="item.image" :alt="item.title" class="card-image" />
+                <img :src="item.images[0]" :alt="item.title" class="card-image" />
                 <div class="card-image-overlay">
                   <span class="view-link">View Details 🔍</span>
                 </div>
