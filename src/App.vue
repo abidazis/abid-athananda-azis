@@ -6,13 +6,27 @@ import './assets/style.css'
 import profileImg from './assets/images/profile.jpg'
 import heroBg from './assets/images/hero-bg.webp'
 
-// Import Foto (Pastikan file ini benar-benar ADA di folder kamu)
-import proj1Img from './assets/images/projects/project1.jpg'
-import proj2Img from './assets/images/projects/project2.jpg'
-import proj3Img from './assets/images/projects/project3.jpg'
-import proj4Img from './assets/images/projects/project4.jpg'
-// Kalau nanti kamu punya foto ke-2 dan ke-3, import juga di sini ya:
-// import proj1Img_2 from './assets/images/projects/project1-2.jpg'
+// IMPORT FOTO SESUAI EKSTENSI DI SCREENSHOT KAMU (SANGAT PENTING!)
+import p1_1 from './assets/images/projects/p1-1.jpg'
+import p1_2 from './assets/images/projects/p1-2.png'
+import p1_3 from './assets/images/projects/p1-3.png'
+import p1_4 from './assets/images/projects/p1-4.png'
+
+import p2_1 from './assets/images/projects/p2-1.jpg'
+import p2_2 from './assets/images/projects/p2-2.png'
+import p2_3 from './assets/images/projects/p2-3.png'
+
+import p3_1 from './assets/images/projects/p3-1.jpg'
+import p3_2 from './assets/images/projects/p3-2.png'
+import p3_3 from './assets/images/projects/p3-3.png'
+
+import p4_1 from './assets/images/projects/p4-1.jpg'
+import p4_2 from './assets/images/projects/p4-2.png'
+import p4_3 from './assets/images/projects/p4-3.jpg'
+
+import p5_1 from './assets/images/projects/p5-1.png'
+import p5_2 from './assets/images/projects/p5-2.png'
+import p5_3 from './assets/images/projects/p5-3.png'
 
 // --- 2. TECH STACK ICONS ---
 const techSkills = ref([
@@ -36,9 +50,7 @@ const projects = ref([
     tech: ['Laravel', 'Vue.js', 'MySQL', 'System Analysis'],
     link: '#', 
     github: '#',
-    // Masukkan variabel gambar yang sudah di-import di atas.
-    // Sementara saya isi proj1Img sebanyak 3x agar galerinya tetap terlihat penuh.
-    images: [proj1Img, proj1Img, proj1Img] 
+    images: [p2_1, p2_2, p2_3] // Memakai p2 sesuai urutan kodenya tadi
   },
   {
     id: 2,
@@ -48,7 +60,7 @@ const projects = ref([
     tech: ['Laravel', 'Web Development', 'MySQL'],
     link: '#',
     github: '#',
-    images: [proj2Img, proj2Img]
+    images: [p3_1, p3_2, p3_3]
   },
   {
     id: 3,
@@ -58,7 +70,7 @@ const projects = ref([
     tech: ['Laravel', 'Vue.js', 'UI/UX'],
     link: '#',
     github: '#',
-    images: [proj3Img, proj3Img, proj3Img]
+    images: [p1_1, p1_2, p1_3, p1_4]
   },
   {
     id: 4,
@@ -68,7 +80,7 @@ const projects = ref([
     tech: ['Fullstack', 'API Integration', 'UI/UX'],
     link: '#',
     github: '#',
-    images: [proj4Img, proj4Img]
+    images: [p4_1, p4_2, p4_3]
   },
   {
     id: 5,
@@ -78,8 +90,7 @@ const projects = ref([
     tech: ['Laravel', 'Livewire', 'Database Design'],
     link: '#',
     github: '#',
-    // Perhatikan: karena belum ada proj5Img, saya pakai proj2Img dulu agar tidak error.
-    images: [proj2Img, proj2Img] 
+    images: [p5_1, p5_2, p5_3] 
   }
 ])
 
@@ -87,7 +98,7 @@ const contact = {
   email: 'abidathanandaazis@gmail.com',
   linkedin: 'https://www.linkedin.com/in/abid-athananda-azis/',
   github: 'https://github.com/abidazis',
-  cvFile: '/CV_Abid_Azis.pdf'
+  cvFile: '/CV_Abid_Azis.pdf' // PASTIKAN FILE CV INI ADA DI DALAM FOLDER "public"
 }
 
 // --- 4. MODAL LOGIC (POP-UP) ---
