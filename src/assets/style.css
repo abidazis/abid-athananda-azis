@@ -185,3 +185,33 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
   .modal-title { font-size: 1.8rem; }
   .footer-inner { flex-direction: column; gap: 15px; text-align: center; }
 }
+
+/* =========================================================
+   X. EXPERIENCE TIMELINE SECTION
+   ========================================================= */
+.experience-section { padding: 100px 0; width: 100%; background: linear-gradient(to bottom, transparent, rgba(10, 14, 23, 0.8), transparent); }
+.timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 40px; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: rgba(66, 184, 131, 0.2); }
+
+.timeline-item { position: relative; margin-bottom: 50px; }
+.timeline-item:last-child { margin-bottom: 0; }
+
+.timeline-dot { position: absolute; left: -58px; top: 0; width: 36px; height: 36px; background: var(--bg-dark); border: 2px solid var(--accent); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: var(--accent); z-index: 2; box-shadow: 0 0 15px rgba(66, 184, 131, 0.3); }
+
+.timeline-content { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 30px; box-shadow: var(--shadow-card); transition: transform 0.3s ease, border-color 0.3s ease; }
+.timeline-content:hover { transform: translateX(10px); border-color: rgba(66, 184, 131, 0.3); }
+
+.timeline-period { display: inline-block; padding: 5px 15px; background: rgba(66, 184, 131, 0.1); color: var(--accent); font-size: 0.85rem; font-weight: 700; border-radius: 20px; margin-bottom: 15px; font-family: 'Courier New', monospace; letter-spacing: 1px;}
+.timeline-role { font-size: 1.4rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
+.timeline-company { font-size: 1.05rem; color: #a0a0a0; margin-bottom: 15px; font-weight: 500; }
+.timeline-desc { color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; }
+
+/* Tambahan untuk mobile agar timeline tidak kepotong */
+@media (max-width: 768px) {
+  .timeline { padding-left: 30px; }
+  .timeline-dot { left: -45px; width: 30px; height: 30px; }
+  .timeline-dot svg { width: 14px; height: 14px; }
+  .timeline-content { padding: 20px; }
+  .timeline-content:hover { transform: translateX(5px); }
+  .timeline-role { font-size: 1.2rem; }
+}

@@ -116,6 +116,59 @@ const closeModal = () => {
   setTimeout(() => { selectedProject.value = null }, 300) 
   document.body.style.overflow = 'auto' 
 }
+
+// --- 5. EXPERIENCE & EDUCATION DATA ---
+const experiences = ref([
+  {
+    id: 1,
+    type: 'education',
+    role: 'Graduate of Computer and Network Engineering',
+    company: 'SMKN 1 Cikarang Selatan',
+    period: '2019 - 2022',
+    desc: 'achieved and graduated with an average final grade of 82.50.'
+  },
+  {
+    id: 2,
+    type: 'education',
+    role: 'Bachelor of Information Systems',
+    company: 'Universitas Singaperbangsa Karawang (UNSIKA)',
+    period: '2022 - 2026',
+    desc: 'Final year Information Systems student (has completed thesis defense) with a GPA of 3.93 specializing in corporate system digitization. Relevant courses: Web Services Applications, Business Web Development, Software Engineering, System Design Analysis.'
+  },
+  {
+    id: 3,
+    type: 'education',
+    role: 'Certified Junior Web Developer',
+    company: 'BPPTIK (Center for Information and Communication Technology Training and Development) - KOMINFO',
+    period: '2023',
+    desc: 'Completed an independent website project with satisfactory results and passed the competency test for Junior Web Development.'
+  },
+  {
+    id: 4,
+    type: 'education',
+    role: 'Certified Independent Study',
+    company: 'Internship And Certified Independent Study (Msib) Rakamin Academy Program Of The Ministry Of Kemendikbudristek',
+    period: '2023',
+    desc: 'Successfully completed a Certified Independent Study with the IT Full Stack Developer: Mastering Web Development Blending With Data Science program organized by RAKAMIN ACADEMY, a program of the Ministry of Education, Culture, Research, and Technology.'
+  },
+  {
+    id: 5,
+    type: 'work',
+    role: 'Freelance Full-Stack Developer',
+    company: 'Self-Employed / Various Clients',
+    period: '2025 - Present',
+    desc: 'Custom web application development, recent projects include the Assessment Recap System for the Paskibra Competition, the Quenna clothing company website, and an order and financial management system for UMKM.'
+  },
+  {
+    id: 6,
+    type: 'work',
+    role: 'MIS (Management Information System) Intern',
+    company: 'PT Kayaba Indonesia',
+    period: 'Aug 2025 - Jan 2026',
+    desc: 'Served as a Fullstack Web Developer. Successfully completed the task of designing and building at least 3 company business process digitization systems, including a business trip document approval workflow and packaging specifications that significantly improved operational efficiency.'
+  },
+])
+
 </script>
 
 <template>
@@ -181,6 +234,32 @@ const closeModal = () => {
         </div>
       </section>
 
+      <section id="experience" class="experience-section">
+        <div class="container">
+          <div class="section-header text-center">
+            <p class="section-tag">My Journey</p>
+            <h2 class="section-title">Experience & Education</h2>
+            <div class="title-line mx-auto"></div>
+          </div>
+
+          <div class="timeline">
+            <div v-for="exp in experiences" :key="exp.id" class="timeline-item">
+              <div class="timeline-dot">
+                <svg v-if="exp.type === 'education'" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                <svg v-else-if="exp.type === 'business'" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <svg v-else xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              </div>
+              <div class="timeline-content">
+                <span class="timeline-period">{{ exp.period }}</span>
+                <h3 class="timeline-role">{{ exp.role }}</h3>
+                <h4 class="timeline-company">{{ exp.company }}</h4>
+                <p class="timeline-desc">{{ exp.desc }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <section id="projects" class="projects">
         <div class="container">
           <div class="section-header">
