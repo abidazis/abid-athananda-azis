@@ -6,10 +6,13 @@ import './assets/style.css'
 import profileImg from './assets/images/profile.jpg'
 import heroBg from './assets/images/hero-bg.webp'
 
+// Import Foto (Pastikan file ini benar-benar ADA di folder kamu)
 import proj1Img from './assets/images/projects/project1.jpg'
 import proj2Img from './assets/images/projects/project2.jpg'
 import proj3Img from './assets/images/projects/project3.jpg'
 import proj4Img from './assets/images/projects/project4.jpg'
+// Kalau nanti kamu punya foto ke-2 dan ke-3, import juga di sini ya:
+// import proj1Img_2 from './assets/images/projects/project1-2.jpg'
 
 // --- 2. TECH STACK ICONS ---
 const techSkills = ref([
@@ -26,35 +29,36 @@ const techSkills = ref([
 // --- 3. PROJECTS DATA ---
 const projects = ref([
   {
-    id: 2,
+    id: 1,
     title: 'Document Approval Workflow',
     shortDesc: 'A digitalized paperless workflow system for enterprise packaging approvals.',
     fullDesc: 'A comprehensive web-based workflow system built to improve business process efficiency (Paperless Office) at PT Kayaba Indonesia. This system digitizes the manual packaging document approval process, featuring multi-level role approvals, real-time status tracking, and structured digital archiving.',
     tech: ['Laravel', 'Vue.js', 'MySQL', 'System Analysis'],
     link: '#', 
     github: '#',
-    // Masukkan 2-3 foto di sini
-    images: [p2_1, p2_2, p2_3] 
+    // Masukkan variabel gambar yang sudah di-import di atas.
+    // Sementara saya isi proj1Img sebanyak 3x agar galerinya tetap terlihat penuh.
+    images: [proj1Img, proj1Img, proj1Img] 
   },
   {
-    id: 3,
+    id: 2,
     title: 'Business Travel Management',
     shortDesc: 'A corporate system designed to manage travel documents and requests.',
     fullDesc: 'An internal web application designed to streamline corporate business travel. The system allows employees to submit travel requests, manages the approval hierarchy, calculates estimated travel allowances, and generates official travel assignment letters automatically.',
     tech: ['Laravel', 'Web Development', 'MySQL'],
     link: '#',
     github: '#',
-    images: [p3_1, p3_2, p3_3]
+    images: [proj2Img, proj2Img]
   },
   {
-    id: 1,
+    id: 3,
     title: 'Corporate Social Responsibility (CSR) System',
     shortDesc: 'A platform to manage, track, and report corporate social responsibility programs.',
     fullDesc: 'A centralized digital platform created to manage a company’s CSR initiatives. It features budget tracking, program documentation, beneficiary management, and generates comprehensive reports to measure the impact of the social programs implemented.',
     tech: ['Laravel', 'Vue.js', 'UI/UX'],
     link: '#',
     github: '#',
-    images: [p1_1, p1_2, p1_3, p1_4]
+    images: [proj3Img, proj3Img, proj3Img]
   },
   {
     id: 4,
@@ -64,7 +68,7 @@ const projects = ref([
     tech: ['Fullstack', 'API Integration', 'UI/UX'],
     link: '#',
     github: '#',
-    images: [p4_1, p4_2, p4_3]
+    images: [proj4Img, proj4Img]
   },
   {
     id: 5,
@@ -74,15 +78,16 @@ const projects = ref([
     tech: ['Laravel', 'Livewire', 'Database Design'],
     link: '#',
     github: '#',
-    images: [p5_1, p5_2, p5_3] // Ganti dengan foto asli
+    // Perhatikan: karena belum ada proj5Img, saya pakai proj2Img dulu agar tidak error.
+    images: [proj2Img, proj2Img] 
   }
 ])
 
 const contact = {
-  email: 'abidathanandaazis@gmail.com', // Ganti dengan email asli
-  linkedin: 'https://www.linkedin.com/in/abid-athananda-azis/', // Ganti
-  github: 'https://github.com/abidazis', // Ganti
-  cvFile: '/CV_Abid_Azis.pdf' // NAMA FILE HARUS SAMA PERSIS DENGAN YANG DI FOLDER PUBLIC
+  email: 'abidathanandaazis@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/abid-athananda-azis/',
+  github: 'https://github.com/abidazis',
+  cvFile: '/CV_Abid_Azis.pdf'
 }
 
 // --- 4. MODAL LOGIC (POP-UP) ---
@@ -92,13 +97,13 @@ const selectedProject = ref(null)
 const openModal = (project) => {
   selectedProject.value = project
   isModalOpen.value = true
-  document.body.style.overflow = 'hidden' // Kunci scroll halaman belakang
+  document.body.style.overflow = 'hidden' 
 }
 
 const closeModal = () => {
   isModalOpen.value = false
-  setTimeout(() => { selectedProject.value = null }, 300) // Delay hapus data biar animasi smooth
-  document.body.style.overflow = 'auto' // Buka kunci scroll
+  setTimeout(() => { selectedProject.value = null }, 300) 
+  document.body.style.overflow = 'auto' 
 }
 </script>
 
@@ -125,7 +130,7 @@ const closeModal = () => {
           <div class="hero-text-block">
             <p class="greeting">Hi, I'm <span class="hand-icon">👋</span></p>
             <h1 class="hero-name gradient-text">Abid Azis</h1>
-            <h2 class="hero-title">Fullstack Web Developer | <span class="highlight">Building Scalable Web Applications</span></h2>
+            <h2 class="hero-title">Fullstack Web Developer | <span class="highlight">Building Scalable Web</span></h2>
             <p class="hero-bio">
               I help businesses grow through modern, fast, and reliable web systems. 
               Experienced in using <strong>Laravel & Vue.js</strong> to transform conventional business workflows into scalable, user-friendly web applications.
@@ -226,8 +231,8 @@ const closeModal = () => {
         <button class="close-btn" @click="closeModal">×</button>
         
         <div v-if="selectedProject" class="modal-body">
-          <div class="modal-image-container">
-            <img :src="selectedProject.image" :alt="selectedProject.title" class="modal-image" />
+          <div class="modal-gallery">
+            <img v-for="(img, idx) in selectedProject.images" :key="idx" :src="img" :alt="selectedProject.title + ' Screenshot ' + (idx+1)" class="modal-gallery-img" />
           </div>
           
           <div class="modal-info">
